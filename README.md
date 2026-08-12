@@ -1,6 +1,6 @@
 # ARES Core v2 webpage
 
-[](/img/updateARES)
+[WebPage](/img/updateARES.png)
 
 
 ## Running
