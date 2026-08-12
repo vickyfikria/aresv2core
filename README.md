@@ -3,6 +3,8 @@
 ![WebPage](/img/updateARES.png)
 
 
+![2000 survey](/img/2000_survey.png)
+
 ## Running
 
 'npm run build'
