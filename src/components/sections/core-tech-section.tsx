@@ -1,5 +1,10 @@
 import { KeyRound, BrainCircuit, ShieldCheck, Zap, Check } from "lucide-react"
-import { Card } from "@/components/ui/card"
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/ui/accordion"
 
 const SOLUTIONS = [
   {
@@ -69,35 +74,50 @@ export function CoreTechSection() {
           </h2>
         </div>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-2">
-          {SOLUTIONS.map((solution) => (
-            <Card key={solution.title} className="p-6">
-              <div className="flex items-start gap-4">
-                <span
-                  className={`flex size-11 shrink-0 items-center justify-center rounded-xl ${solution.bg} ring-1 ${solution.ring}`}
-                >
-                  <solution.icon className={`size-5 ${solution.color}`} strokeWidth={2} />
-                </span>
-                <div>
-                  <h3 className="text-base font-semibold text-foreground">
-                    {solution.title}
-                  </h3>
-                  <p className="mt-0.5 font-mono-tight text-xs text-muted-foreground">
-                    {solution.subtitle}
-                  </p>
+        <Accordion
+          type="single"
+          collapsible
+          defaultValue="item-0"
+          className="mx-auto mt-14 flex max-w-4xl flex-col gap-4"
+        >
+          {SOLUTIONS.map((solution, index) => (
+            <AccordionItem key={solution.title} value={`item-${index}`}>
+              <AccordionTrigger>
+                <div className="flex items-center gap-4">
+                  <span
+                    className={`flex size-11 shrink-0 items-center justify-center rounded-xl ${solution.bg} ring-1 ${solution.ring}`}
+                  >
+                    <solution.icon
+                      className={`size-5 ${solution.color}`}
+                      strokeWidth={2}
+                    />
+                  </span>
+                  <div>
+                    <h3 className="text-base font-semibold text-foreground">
+                      {solution.title}
+                    </h3>
+                    <p className="mt-0.5 font-mono-tight text-xs text-muted-foreground">
+                      {solution.subtitle}
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <ul className="mt-4 space-y-2.5">
-                {solution.items.map((item) => (
-                  <li key={item} className="flex items-start gap-2.5 text-sm leading-relaxed text-muted-foreground">
-                    <Check className={`mt-0.5 size-4 shrink-0 ${solution.color}`} />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </Card>
+              </AccordionTrigger>
+              <AccordionContent>
+                <ul className="space-y-2.5 pl-[3.75rem]">
+                  {solution.items.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-start gap-2.5 text-sm leading-relaxed text-muted-foreground"
+                    >
+                      <Check className={`mt-0.5 size-4 shrink-0 ${solution.color}`} />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </AccordionContent>
+            </AccordionItem>
           ))}
-        </div>
+        </Accordion>
       </div>
     </section>
   )
